@@ -40,8 +40,22 @@
 + JavaScript’s capabilities greatly depend on the environment it’s running in.
 + Same Origin Policy
 
+- **IDE (Integrated Development Environment)**: Full-featured software with tools like debugging, code suggestions, and project management, all-in-one.
+- **Lightweight Editor**: Simple and fast code editor focused on editing text, with fewer built-in tools, but often customizable with extensions.
 
 
+That had the benefit of never breaking existing code. But the downside was that any mistake or an imperfect decision made by JavaScript’s creators got stuck in the language forever.
+
+This was the case until 2009 when ECMAScript 5 (ES5) appeared. It added new features to the language and modified some of the existing ones. To keep the old code working, most such modifications are off by default. You need to explicitly enable them with a special directive: `"use strict"`
+
+- **Number**: Numeric values (e.g., `42`, `3.14`).
+- **String**: Text data (e.g., `"Hello"`).
+- **Boolean**: `true` or `false`.
+- **Undefined**: Variable declared but not assigned a value.
+- **Null**: Represents no value.
+- **Object**: Collection of key-value pairs.
+- **Symbol**: Unique and immutable identifier.
+- **BigInt**: For numbers larger than `Number` can handle.
 
 
 
