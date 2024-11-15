@@ -57,7 +57,54 @@ This was the case until 2009 when ECMAScript 5 (ES5) appeared. It added new feat
 - **Symbol**: Unique and immutable identifier.
 - **BigInt**: For numbers larger than `Number` can handle.
 
+**JavaScript Variables - Objects and Primitives**
 
+In JavaScript, variables can hold two main types of values: objects and primitives.
+
+**Primitives**
+
+Primitives are simple, immutable values. They are stored directly in memory as single units. Here are the primitive data types in JavaScript:
+
+- **Numbers:** Represent numeric values (integers, floats).
+    - Examples: `1`, `3.14`, `-10`
+- **Strings:** Represent sequences of characters.
+    - Examples: 'hello', 'JavaScript', 'true'
+- **Booleans:** Represent true or false values.
+    - Examples: `true`, `false`
+- **Null:** Represents the absence of a value.
+    - Example: `null`
+- **Undefined:** Represents a variable that has not been assigned a value.
+    - Example: `let x;`
+
+**Objects**
+
+Objects are complex data types that store properties (key-value pairs). They are stored as references to memory locations. Here are some key characteristics of objects:
+
+- **Mutable:** Objects can be modified after they are created.
+- **Properties:** Properties can be accessed using dot notation (`object.property`) or bracket notation (`object['property']`).
+- **Methods:** Functions defined within an object are called methods.
+
+**Examples of Objects**
+
+- **Arrays:** Ordered collections of values.
+    - Example: `let fruits = ['apple', 'banana', 'orange'];`
+- **Functions:** Blocks of code that can be executed.
+    - Example: `function sayHello() { console.log('Hello'); }`
+- **Dates:** Represent points in time.
+    - Example: `let today = new Date();`
+
+**Important Considerations**
+
+- **Primitive Equality:** Primitive values are compared by their value.
+- **Object Equality:** Objects are compared by their reference. Two objects are only equal if they refer to the same object in memory.
+- **Pass by Value:** Primitives are passed by value. When a primitive is passed to a function, a copy of the value is made.
+- **Pass by Reference:** Objects are passed by reference. When an object is passed to a function, a reference to the object is passed.
+
+**Common Pitfalls**
+
+- **Confusing primitives and objects:** It's important to understand the difference between primitives and objects to avoid common errors.
+- **Modifying objects passed as arguments:** Since objects are passed by reference, modifying an object passed to a function will affect the original object.
+- **Using `==` instead of `===`:** The `==` operator performs type coercion, which can lead to unexpected results. It's recommended to always use the strict equality operator (`===`) to compare values.
 
 > References
 > - https://javascript.info/
