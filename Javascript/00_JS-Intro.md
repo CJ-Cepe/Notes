@@ -105,6 +105,142 @@ Objects are complex data types that store properties (key-value pairs). They are
 - **Confusing primitives and objects:** It's important to understand the difference between primitives and objects to avoid common errors.
 - **Modifying objects passed as arguments:** Since objects are passed by reference, modifying an object passed to a function will affect the original object.
 - **Using `==` instead of `===`:** The `==` operator performs type coercion, which can lead to unexpected results. It's recommended to always use the strict equality operator (`===`) to compare values.
+**JavaScript Functions: A Comprehensive Guide**
+
+**What is a Function?** A function is a block of reusable code designed to perform a specific task. It takes input values, processes them, and returns an output value.
+
+**Syntax:**
+
+JavaScript
+
+```
+function functionName(parameter1, parameter2, ...) {
+  // Function body
+  return value; // Optional return statement
+}
+```
+
+Use code [with caution.](/faq#coding)
+
+**Key Components:**
+
+1. **Function Name:** A unique identifier to call the function.
+2. **Parameters:** Variables defined within the parentheses to receive input values.
+3. **Function Body:** The code block that executes when the function is called.
+4. **Return Statement:** Optionally returns a value from the function.
+
+**Calling a Function:** To execute a function, you use its name followed by parentheses:
+
+JavaScript
+
+```
+functionName(argument1, argument2, ...);
+```
+
+Use code [with caution.](/faq#coding)
+
+- **Arguments:** The values passed to the function when it's called.
+
+**Example:**
+
+JavaScript
+
+```
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+greet("Alice"); // Output: Hello, Alice!
+```
+
+Use code [with caution.](/faq#coding)
+
+**Types of Functions:**
+
+1. **Named Functions:**
+    - Defined with a specific name.
+    - Can be called from anywhere within the script.
+2. **Anonymous Functions:**
+    - Defined without a name.
+    - Often used as arguments to other functions or assigned to variables.
+3. **Arrow Functions:**
+    - A concise syntax for defining anonymous functions.
+    - Useful for short, simple functions.
+
+**Example:**
+
+JavaScript
+
+```
+// Named Function
+function square(x) {
+  return x * x;
+}
+
+// Anonymous Function
+let cube = function(x) {
+  return x * x * x;
+};
+
+// Arrow Function
+let multiply = (x, y) => x * y;
+```
+
+Use code [with caution.](/faq#coding)
+
+**Function Scope:**
+
+- Variables declared within a function are local to that function.
+- Variables declared outside a function are global.
+
+**Return Statement:**
+
+- The `return` statement exits a function and optionally returns a value.
+- If no `return` statement is present, the function implicitly returns `undefined`.
+
+**Function Expressions:**
+
+- Functions can be assigned to variables:
+
+JavaScript
+
+```
+let add = function(x, y) {
+  return x + y;
+};
+```
+
+Use code [with caution.](/faq#coding)
+
+**IIFE (Immediately Invoked Function Expression):**
+
+- An anonymous function that is executed immediately after being defined:
+
+JavaScript
+
+```
+(function() {
+  console.log("This function runs immediately.");
+})();
+```
+
+Use code [with caution.](/faq#coding)
+
+**Recursive Functions:**
+
+- Functions that call themselves directly or indirectly.
+- Used to solve problems that can be broken down into smaller, similar subproblems.
+
+**Key Points to Remember:**
+
+- Functions promote code reusability.
+- They help organize code into smaller, manageable parts.
+- Functions can take input parameters and return output values.
+- Understand function scope and variable accessibility.
+- Use arrow functions for concise syntax.
+- Explore recursive functions for solving specific problems.
+
+By mastering JavaScript functions, you can write more efficient, modular, and well-structured code.
 
 > References
 > - https://javascript.info/
