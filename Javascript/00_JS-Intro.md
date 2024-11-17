@@ -240,7 +240,107 @@ Use code [with caution.](/faq#coding)
 - Use arrow functions for concise syntax.
 - Explore recursive functions for solving specific problems.
 
-By mastering JavaScript functions, you can write more efficient, modular, and well-structured code.
+**Object-Oriented Programming (OOP)**
+
+**Core Concepts:**
+
+1. **Objects:**
+    
+    - Instances of classes that represent real-world entities.
+    - Composed of properties (data) and methods (functions).
+    - Example:
+        
+        JavaScript
+        
+        ```
+        const person = {
+            firstName: "Alice",
+            lastName: "Johnson",
+            age: 30,
+            greet: function() {
+                console.log("Hello, my name is " + this.firstName + " " + this.lastName);
+            }
+        };
+        ```
+        
+        Use code [with caution.](/faq#coding)
+        
+2. **Classes:**
+    
+    - Blueprints for creating objects.
+    - Define the properties and methods that objects of that class will have.
+    - Example:
+        
+        JavaScript
+        
+        ```
+        class Person {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+        
+            greet() {
+                console.log("Hello, my name is " + this.firstName + " " + this.lastName);      
+            }
+        }
+        
+        const person1 = new Person("Bob", "Smith", 25);
+        ```
+        
+        Use code [with caution.](/faq#coding)
+        
+3. **Inheritance:**
+    
+    - The ability to create new classes based on existing ones.
+    - Child classes inherit properties and methods from parent classes.
+    - Example:
+        
+        JavaScript
+        
+        ```
+        class Student extends Person {
+            constructor(firstName, lastName, age, grade) {
+                super(firstName, lastName, age);
+                this.grade = grade;
+            }
+        
+            study() {
+                console.log("Studying    hard!");
+            }
+        }
+        ```
+        
+        Use code [with caution.](/faq#coding)
+        
+4. **Polymorphism:**
+    
+    - The ability of objects of different types to be treated as if they were of the same type.
+    - Achieved through method overriding and interfaces.
+5. **Encapsulation:**
+    
+    - The practice of bundling data and methods that operate on that data within a single unit (an object or a class).
+    - Protects data integrity by controlling access to it.
+
+**Key Points:**
+
+- JavaScript is a prototype-based language, not a class-based language.
+- Classes are syntactic sugar introduced in ES6 to make OOP concepts easier to understand and implement.
+- `this` keyword refers to the current object.
+- Constructors are special methods used to initialize objects.
+- Use `super()` to call the parent class's constructor.
+- Inheritance allows code reuse and creates hierarchical relationships between classes.
+- Polymorphism enables flexible and extensible code.
+- Encapsulation promotes modularity and data security.
+
+**Best Practices:**
+
+- Use clear and concise naming conventions.
+- Keep classes and methods focused on specific tasks.
+- Favor composition over inheritance when possible.
+- Use object-oriented principles to structure your code effectively.
+- Test your code thoroughly to ensure correctness and reliability.
 
 > References
 > - https://javascript.info/
