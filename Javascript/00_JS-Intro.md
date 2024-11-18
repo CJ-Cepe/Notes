@@ -17,15 +17,12 @@
 	+ don't need special preparation/compilation to run
 + Engine - JS runs in any device with JS engine
 	+ JavaScript virtual machine - browsers have an embedded engine
-
-
-### ECMAScript
-+ **ECMAScript** - is a standard. 
++ **ECMAScript** - is a standard.
 	+ **JavaScript** is the most popular _implementation_ of that standard. Other implementations include: [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey), [V8](https://en.wikipedia.org/wiki/Chrome_V8), and [ActionScript](https://en.wikipedia.org/wiki/ActionScript).
 	+ [The ECMA-262 specification](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contains the most in-depth, detailed and formalized information about JavaScript
-+ Manual - 
++ Manual
 	+ [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) is the main manual with examples and other information.
-+ Compatibility tables 
++ Compatibility tables
 	+ https://caniuse.com – per-feature tables of support
 
 
@@ -34,7 +31,7 @@
 
 ## Mental Model
 
-
+ 
 ## Security/Limitation (to fill)
 + JavaScript’s abilities in the browser are limited to protect the user’s safety.
 + JavaScript’s capabilities greatly depend on the environment it’s running in.
