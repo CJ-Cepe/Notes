@@ -31,14 +31,11 @@
 
 ## Mental Model
 
- 
 ## Security/Limitation (to fill)
 + JavaScript’s abilities in the browser are limited to protect the user’s safety.
 + JavaScript’s capabilities greatly depend on the environment it’s running in.
 + Same Origin Policy
 
-- **IDE (Integrated Development Environment)**: Full-featured software with tools like debugging, code suggestions, and project management, all-in-one.
-- **Lightweight Editor**: Simple and fast code editor focused on editing text, with fewer built-in tools, but often customizable with extensions.
 
 
 That had the benefit of never breaking existing code. But the downside was that any mistake or an imperfect decision made by JavaScript’s creators got stuck in the language forever.
