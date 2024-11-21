@@ -30,6 +30,47 @@
 ### Why is it called JavaScript
 
 ## Mental Model
+**1. The Variable as a Label**
+
+- **Think of a variable as a label attached to a value.**
+- The label can change, but the value remains the same.
+- When you assign a new value to a variable, you're simply changing the label's reference.
+
+**2. The Execution Context**
+
+- **Imagine a stack of plates, where each plate represents a function call.**
+- When a function is called, a new plate is added to the stack.
+- The function's local variables and parameters are placed on this plate.
+- When the function returns, the plate is removed from the stack.
+
+**3. The Prototype Chain**
+
+- **Think of a chain of objects, linked together by their prototypes.**
+- When you access a property on an object, JavaScript searches the object itself first.
+- If the property isn't found, it moves up the prototype chain to the parent object.
+- This process continues until the property is found or the end of the chain is reached.
+
+**4. The Event Loop**
+
+- **Imagine a single-threaded task queue and a message queue.**
+- The task queue processes tasks one at a time.
+- The message queue holds tasks that are waiting to be executed.
+- The event loop continuously checks the message queue and moves tasks to the task queue when they're ready.
+
+**5. The DOM as a Tree**
+
+- **Think of the DOM as a hierarchical tree structure.**
+- The root node is the `html` element.
+- Each node has child nodes, which can have their own child nodes.
+- You can manipulate the DOM by adding, removing, or modifying nodes.
+
+**Additional Tips:**
+
+- **Visualize code execution:** Use debugging tools or mental simulations to trace the flow of execution.
+- **Break down complex problems into smaller, manageable parts.**
+- **Experiment and learn by doing.**
+- **Don't be afraid to ask questions and seek help.**
+- **Stay curious and keep learning.**
 
 ## Security/Limitation (to fill)
 + JavaScript’s abilities in the browser are limited to protect the user’s safety.
