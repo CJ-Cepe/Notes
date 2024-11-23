@@ -1,28 +1,97 @@
 # Variables
 ## Core
-+ a _named container_ for a value. Variables label and store data in memory
-+ variables are not values; they contain values and represent them with a name
-+ after a binding has been defined, its name can be used as an expression
-+ variables is also referred as bindings & Identifiers
++ Variable/s is/are
+	+ a _named container_ for a value
+	+ label and store data in memory
+	+ are not values; they contain values and represent them with a name
+	+ also referred as _bindings_ & Identifiers
 + variables can hold two types of data: _primitive_ & _reference_ values
 + few things you can do with variables:
 	+ Create a variable with a descriptive name
 	+ Store or update information stored in a variable
 	+ Reference or “get” information stored in a variable
-
++ tips
+	+ a variable name should have a clean, obvious meaning, describing the data that it stores.
+	+ make names maximally descriptive and concise
+## Syntax
+```JS
+	//Declaring variable
+	let message;
+		//Assigning value
+		message = 'Hello';
+	
+	//Declaring & Assigning in 1 line
+	let message = 'Hello!';
+	
+	//Declare multiple variables in one line
+	let user = 'John', age = 25, message = 'Hello';
+	
+	//Multiline variant
+		//style 1
+		let user = 'John';
+		let age = 25;
+		let message = 'Hello';
+	
+		//style 2
+		let user = 'John',
+			age = 25,
+			message = 'Hello';
+			
+		//style 3
+		let user = 'John'
+		  , age = 25
+		  , message = 'Hello';
+	
+```
 
 ## Mental Model
-+ Tentacles rather than boxes
++ Boxes with labels containing values
++ Variables as tentacles
 	+ They do not _contain_ values; they _grasp_ them—two bindings can refer to the same value.
++ Variables are wires
+	+ A variable is a wire that point to values
+	+ It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe
+		+ The left side of an assignment must be a “wire”
+		+ The right side of an assignment must be an expression
+	+ "=" is the wire
+	+ we can't pass variables to functions but instead pass the current value of a variable
 
 ## Naming Convention
-+ the name must contain only letters, digits, or the symbols `$`and `_`
++ the name must contain only letters, digits, or the symbols `$`and `_
 + variable names CANNOT start with numbers
-+ variable names are case sensitive
-+ variable names cannot be the same as keywords
++ variable names CANNOT be the same as keywords/reserved words
++ variable names are case sensitive`
+```js
+	//Valid
+	let $ = 1; // declared a variable with the name "$"
+	let _ = 2; // and now a variable with the name "_"
+	
+	//Not-valid
+	let 1a; // cannot start with a digit
+	let my-name; // hyphens '-' aren't allowed in the name
+```
 
 ## Declaration
-### var (variable)
++ a variable should be declared only once
++ after a binding has been defined, its name can be used as an expression
++ in old time, in non "use-strict" mode, it is technically possible to directly assign without declaration keywords. _bad practice_ -> see pragma notes
+	```js
+	//code 1 - no "use strict" in this example
+	num = 5; // the variable "num" is created if it didn't exist
+	alert(num); // 5
+		
+	//code 2 - with "use strict";
+	num = 5; // error: num is not defined
+	```
+### var
+- an old-school variable declaration
+- declares a function-scoped variable, no block scope
+	- available throughout the function body in which it is defined
+	- no matter how deeply nested its definition
+- allows reassignment
+- tolerates redeclarations
+- hoisted - can be declared below their use
+	- declarations are hoisted, but assignments are not
 ```jsx
 	function varScoping() {
 	  var x = 1;
@@ -35,15 +104,11 @@
 	  console.log(x); // will print 2
 	}
 ```
-- A `var` variable will be available throughout the function body in which it is defined, no matter how deeply nested its definition
-- “var” has no block scope
-- “var” tolerates redeclarations
-- “var” variables can be declared below their use - __HOISTING__
-	- Declarations are hoisted, but assignments are not
 ### let
-- The let keyword signals that the variable can be reassigned a different value.
-- A `let` variable will only be available within the same block where it is defined
-	```jsx
++ declares a block-scoped variable
+	+ only be available within the same block where it is defined
++ allows reassignment
+```jsx
 	function letScoping() {
 	  let x = 1;
 	
@@ -54,13 +119,47 @@
 	
 	  console.log(x); // will print 1
 	}
-	```
+```
 ### const (constant)
-- a const variable CANNOT be reassigned because it is constant. 
+- declares a constant variable
+- cannot be reassigned
 	- If you try to reassign a const variable, you’ll get a _TypeError_
-- constant variables must be assigned a value when declared
+- must be assigned a value when declared
 	- If you try to declare a const variable without a value, you’ll get a _SyntaxError_
+- when to use capitals for constant?
+	- capital-named: for constant values known before execution
+		- used as aliases for “hard-coded” values
+	- camelCase: constant values that are calculated in run-time but do not change after initial assignment
+```js
+	const COLOR_RED = "#F00";
+	const COLOR_GREEN = "#0F0";
+	
+	const myBirthday = '18.04.1982';
+```
 
+## Under the Hood
+
+| **Identifier** | **Type** | **Memory Address** | **Value**                  |
+| -------------- | -------- | ------------------ | -------------------------- |
+| `a`            | `let`    | `0x001`            | `123` (value)              |
+| `b`            | `let`    | `0x002`            | `"cat"` (value)            |
+| `c`            | `const`  | `0x003`            | `true` (value)             |
+| `d`            | `var`    | `0x004`            | `undefined` (value)        |
+| `e`            | `let`    | `0x005`            | `{}` (reference to object) |
+
+ + a simple view of how the JavaScript engine might internally keep track of variables
+	 ```js
+	let a = 123;
+	let b = "cat";
+	const c = true;
+	var d;
+	let e = {};
+	```
++ In lower-level terms, a variable can be thought of as an entry in a symbol table that the JavaScript engine uses, mapping the variable name (identifier) to a memory address where the value is stored.
+
++ variables are stored at an address in memory (RAM). Pass by reference means passing the address in memory. Pass by value means look at the address in memory, get the value and then send it.
++ **For primitives (like numbers)**, JavaScript **copies the value** when you assign it to another variable. Both `a` and `b` will hold their own copies of the value `10`, stored at different memory locations.
++ In javascript when you assign an object to another variable, its memory reference will be shared. It will not create a copy. At the same time, primitive values will act exact opposite to that. It will create a copy when it got assigned to another one variable.
 
 ## Scoping ?
 + Bindings and scopes
@@ -74,7 +173,41 @@
 		+ The set of bindings visible inside a block is determined by the place of that block in the program text. Each local scope can also see all the local scopes that contain it, and all scopes can see the global scope. This approach to binding visibility is called _lexical scoping_.
 	+ Each block creates a new scope
 
-
+- scope
+    - _Scope_ is a concept that refers to where values and functions can be accessed.
+    - Scope defines where variables can be accessed or referenced
+    - where variables can be accessed throughout the program, and is determined by where and how they are declared
+    - Global Scope
+        - variables are declared outside of blocks.
+        - accessible to every part of the program, including code in blocks.
+        - These variables are called **global variables**
+            - are variables that exist within global scope
+    - Block Scope (Local Scope)
+        - When a variable is defined inside a block, it is only accessible to the code within the curly braces {}
+        - Refers to the context within which variables are accessible only within the block they are defined.
+        - known as **local variables**
+            - are variables that exist within block scope.
+    - Scope Pollution
+        - too many global variables that exist in the global namespace, or when we reuse variables across different scopes
+            - difficult to keep track of our different variables and sets us up for potential accidents.
+        - too many global variables can cause problems in a program. When you declare global variables, they go to the _global namespace_. These variables remain there until the program finishes which means our global namespace can fill up really quickly.
+        - while it’s important to know what global scope is, it’s best practice to not define variables in the global scope.
+        - **Global namespace**
+            - is the space in our code that contains globally scoped information.
+        - _Best Practice_
+            - we should follow best practices for scoping our variables as tightly as possible using block scope.
+                
+                1. It will make your code more legible since the blocks will organize your code into discrete sections.
+                2. It makes your code more understandable since it clarifies which variables are associated with different parts of the program rather than having to keep track of them line after line!
+                3. It’s easier to maintain your code, since your code will be modular.
+                4. It will save memory in your code because it will cease to exist after the block finishes running.
+                
+                - _If a variable does not need to exist outside a block— it shouldn’t!_
+    - others
+        - _Global_ scope (a value/function in the global scope can be used anywhere in the entire program)
+        - _File_ or _module_ scope (the value/function can only be accessed from within the file)
+        - _Function_ scope (only visible within the function),
+        - _Code block_ scope (only visible within a `{ ... }` codeblock)
 
 
 
