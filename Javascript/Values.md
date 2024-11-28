@@ -152,7 +152,7 @@
 
 ### String
 + The internal format for strings is always [UTF-16](https://en.wikipedia.org/wiki/UTF-16)
-	+ not tied to the page encoding.
+	+ not tied to the page encoding
 	+ JS has no character type
 	+ indexes are zero-based
 - A string in JavaScript must be surrounded by quotes
@@ -166,7 +166,7 @@
 	```
 - Escaping characters in a string
 	```jsx
-	const bigmouth = 'I\\'ve got no right to take my place…';
+	const bigmouth = 'I\'ve got no right to take my place…';
 	```
 - **Template Literal** (String Interpolation)
 	- To join together strings in JavaScript you can use a different type of string, called a _template literal_
@@ -199,11 +199,14 @@
 		*/
 		```
 - Special Characters ??
-	- \n newline
-	- \t tab
+	- all special characters start with a backslash character `\` _"escape character"_
+	- `\n` newline || `\r\n` windows
+	- `\t` tab
+	- `\\` backslash
+	- `\u...` unicode
 - String comparison
-	- JavaScript uses the so-called “dictionary” or “lexicographical” order.
-	- Strings are compared letter-by-letter.
+	- JavaScript uses the so-called “dictionary” or “lexicographical” order
+	- Strings are compared letter-by-letter
 	- The algorithm to compare two strings is simple:
 		1. Compare the first character of both strings.
 		2. If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second. We’re done.
