@@ -155,6 +155,18 @@
 	+ not tied to the page encoding
 	+ JS has no character type
 	+ indexes are zero-based
++ Strings are immutable
+	```js
+	let str = 'Hi';
+
+	//error
+	str[0] = 'h'; // error
+	alert( str[0] ); // doesn't work
+
+	//workaround
+	str = 'h' + str[1]; // replace the string
+	alert( str ); // hi
+	```
 - A string in JavaScript must be surrounded by quotes
 	```js
 	let str = "Hello";  //double quotes
@@ -198,12 +210,13 @@
 		I gave it a score of 90%.
 		*/
 		```
-- Special Characters ??
+- Special Characters
 	- all special characters start with a backslash character `\` _"escape character"_
-	- `\n` newline || `\r\n` windows
-	- `\t` tab
-	- `\\` backslash
-	- `\u...` unicode
+		- `\n` newline || `\r\n` windows
+		- `\t` tab
+		- `\\` backslash
+		- `\u...` unicode
+	- special character, such as `\n`, is counted as one
 - String comparison
 	- JavaScript uses the so-called “dictionary” or “lexicographical” order
 	- Strings are compared letter-by-letter
@@ -216,6 +229,31 @@
 	- Not a real dictionary, but Unicode order
 		- The comparison algorithm given above is roughly equivalent to the one used in dictionaries or phone books, but it’s not exactly the same.
 		- For instance, case matters. A capital letter "A" is not equal to the lowercase "a". Which one is greater? The lowercase "a". Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode)
+	- A lowercase letter is always greater than the uppercase
+	- Letters with diacritical marks are “out of order”
+	- avascript are encoded using UTF-16 - each character has a corresponding numeric code
+	- The characters are compared by their numeric code. The greater code means that the character is greater
+- Accessing characters
+	```js
+	let str = `Hello`;
+
+	// the first character
+	alert( str[0] ); // H
+	alert( str.at(0) ); // H
+	
+	// the last character
+	alert( str[str.length - 1] ); // o
+	alert( str.at(-1) );
+	```
+	+ .at(pos) method has a benefit of allowing negative position
+		+  If pos is negative, then it’s counted from the end of the string
+	+ The square brackets always return undefined for negative indexes
++ Iterate over characters using `for..of`
+	```js
+	for (let char of "Hello") {
+	  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
+	}
+	```
 
 ### null
 + for unknown values – a standalone type
