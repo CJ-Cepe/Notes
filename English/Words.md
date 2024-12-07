@@ -3,3 +3,4 @@
 + verity
 + coherent
 + infer
++ reverence
