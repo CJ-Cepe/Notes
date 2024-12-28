@@ -1,5 +1,5 @@
-# Variables
-## Core
+# 🌌 Variables
+## ☄️ Core
 + Variable/s is/are
 	+ a _named container_ for a value
 	+ label and store data in memory
@@ -8,12 +8,9 @@
 + variables can hold two types of data: _primitive_ & _reference_ values
 + few things you can do with variables:
 	+ Create a variable with a descriptive name
-	+ Store or update information stored in a variable
+	+ Store or update _information_ stored in a variable
 	+ Reference or “get” information stored in a variable
-+ tips
-	+ a variable name should have a clean, obvious meaning, describing the data that it stores.
-	+ make names maximally descriptive and concise
-## Syntax
+## ☄️ Syntax
 ```JS
 	//Declaring variable
 	let message;
@@ -43,24 +40,23 @@
 		  , message = 'Hello';
 	
 ```
-
-## Mental Model
-+ Boxes with labels containing values
-+ Variables as tentacles
+## ☄️ Mental Model
+1. "Boxes with labels containing values"
+2. "Variables as tentacles"
 	+ They do not _contain_ values; they _grasp_ them—two bindings can refer to the same value.
-+ Variables are wires
+3. "Variables are wires"
 	+ A variable is a wire that point to values
-	+ It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe
+	+ It has two ends and a direction: it starts from a name in my _code_ and it ends pointing at some value in my universe
 		+ The left side of an assignment must be a “wire”
 		+ The right side of an assignment must be an expression
 	+ "=" is the wire
 	+ we can't pass variables to functions but instead pass the current value of a variable
 
-## Naming Convention
+## ☄️ Naming Convention
 + the name must contain only letters, digits, or the symbols `$`and `_
 + variable names CANNOT start with numbers
 + variable names CANNOT be the same as keywords/reserved words
-+ variable names are case sensitive`
++ variable names are case sensitive
 ```js
 	//Valid
 	let $ = 1; // declared a variable with the name "$"
@@ -71,7 +67,10 @@
 	let my-name; // hyphens '-' aren't allowed in the name
 ```
 
-## Declaration
+>[!TIP]
+> - a variable name should have a clean, obvious meaning, describing the data that it stores.
+> - make names maximally descriptive and concise
+## ☄️ Declaration
 + a variable should be declared only once
 + after a binding has been defined, its name can be used as an expression
 + in old time, in non "use-strict" mode, it is technically possible to directly assign without declaration keywords. _bad practice_ -> see pragma notes
@@ -83,7 +82,7 @@
 	//code 2 - with "use strict";
 	num = 5; // error: num is not defined
 	```
-### var
+### 👾 var
 - an old-school variable declaration
 - declares a function-scoped variable, no block scope
 	- available throughout the function body in which it is defined
@@ -104,7 +103,7 @@
 	  console.log(x); // will print 2
 	}
 ```
-### let
+### 👾 let
 + declares a block-scoped variable
 	+ only be available within the same block where it is defined
 + allows reassignment
@@ -120,16 +119,16 @@
 	  console.log(x); // will print 1
 	}
 ```
-### const (constant)
+### 👾 const
 - declares a constant variable
 - cannot be reassigned
 	- If you try to reassign a const variable, you’ll get a _TypeError_
 - must be assigned a value when declared
 	- If you try to declare a const variable without a value, you’ll get a _SyntaxError_
 - when to use capitals for constant?
-	- capital-named: for constant values known before execution
+	- _capital-named_: for constant values known before execution
 		- used as aliases for “hard-coded” values
-	- camelCase: constant values that are calculated in run-time but do not change after initial assignment
+	- _camelCase_: constant values that are calculated in run-time but do not change after initial assignment
 ```js
 	const COLOR_RED = "#F00";
 	const COLOR_GREEN = "#0F0";
@@ -137,7 +136,7 @@
 	const myBirthday = '18.04.1982';
 ```
 
-## Under the Hood
+## ☄️ Under the Hood
 
 | **Identifier** | **Type** | **Memory Address** | **Value**                  |
 | -------------- | -------- | ------------------ | -------------------------- |
@@ -147,19 +146,29 @@
 | `d`            | `var`    | `0x004`            | `undefined` (value)        |
 | `e`            | `let`    | `0x005`            | `{}` (reference to object) |
 
- + a simple view of how the JavaScript engine might internally keep track of variables
-	 ```js
-	let a = 123;
-	let b = "cat";
-	const c = true;
-	var d;
-	let e = {};
-	```
-+ In lower-level terms, a variable can be thought of as an entry in a symbol table that the JavaScript engine uses, mapping the variable name (identifier) to a memory address where the value is stored.
+```js
+let a = 123;
+let b = "cat";
+const c = true;
+var d;
+let e = {};
+```
 
++ a simple view of how the JavaScript engine might internally keep track of variables
++ In lower-level terms, a variable can be thought of as an entry in a symbol table that the JavaScript engine uses, mapping the variable name (identifier) to a memory address where the value is stored.
 + variables are stored at an address in memory (RAM). Pass by reference means passing the address in memory. Pass by value means look at the address in memory, get the value and then send it.
 + **For primitives (like numbers)**, JavaScript **copies the value** when you assign it to another variable. Both `a` and `b` will hold their own copies of the value `10`, stored at different memory locations.
 + In javascript when you assign an object to another variable, its memory reference will be shared. It will not create a copy. At the same time, primitive values will act exact opposite to that. It will create a copy when it got assigned to another one variable.
+
+
+
+
+
+No, variables `a` and `b` do not share same memory location. Each variable is stored in a stack. So they convey the same value but not same reference.
+
+But, of course, value `10`, in it of itself, is accessed by JavaScript through a specific memory location, which JavaScript knows.
+
+
 
 ## Scoping ?
 + Bindings and scopes

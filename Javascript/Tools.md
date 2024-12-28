@@ -9,11 +9,6 @@
 <dt>IDE (Integrated Development Environment)</dt>
 + Full-featured software with tools like debugging, code suggestions, and project management, all-in-one.
 + Examples: Visual Studio, IntelliJ IDEA, Eclipse.
-
-
-
-- 
-
 ## Questions
 + IDE vs editors
 	+ The boundary between an IDE and other parts of the broader software development environment is not well-defined
