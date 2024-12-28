@@ -1,0 +1,2 @@
++ https://dev.to/
++ https://dev.to/chintanonweb/mastering-javascript-memory-a-beginners-guide-to-stack-and-heap-57nj#:~:text=Stack%20memory%20is%20a%20linear,for%20primitives%20and%20local%20variables.
