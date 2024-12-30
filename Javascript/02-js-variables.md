@@ -3,13 +3,11 @@
 + Variable/s is/are
 	+ a _named container_ for a value
 	+ label and store data in memory
-	+ are not values; they contain values and represent them with a name
 	+ also referred as _bindings_ & Identifiers
 + variables can hold two types of data: _primitive_ & _reference_ values
-+ few things you can do with variables:
-	+ Create a variable with a descriptive name
-	+ Store or update _information_ stored in a variable
-	+ Reference or “get” information stored in a variable
+
+>[!IMPORTANT]
+> Variables are not values; they contain values and represent them with a name
 ## ☄️ Syntax
 ```JS
 	//Declaring variable
@@ -40,8 +38,9 @@
 		  , message = 'Hello';
 	
 ```
-## ☄️ Mental Model
+## ☄️ Mental Models
 1. "Boxes with labels containing values"
+	+ a “box” for data, with a uniquely-named sticker on it.
 2. "Variables as tentacles"
 	+ They do not _contain_ values; they _grasp_ them—two bindings can refer to the same value.
 3. "Variables are wires"
@@ -136,37 +135,45 @@
 	const myBirthday = '18.04.1982';
 ```
 
+## ☄️ Where are Variables are stored?
++ Where variables are stored depends on the type of data they hold
+	+ __Primitives__ -> stack
+		+ The value of primitive types is stored directly in the stack if the variable is a local variable.
+		+ For global or closure variables, the storage might vary depending on the JavaScript engine.
+	+ __Non-Primitives__ (Objects, Arrays, Functions) -> heaps
+		+ The _reference_ to the object is stored in the _stack_.
+		- The actual _data_ (the object itself) is stored in the _heap_.
+
+## ☄️ Garbage Collection
++ JavaScript’s garbage collector periodically clears unreferenced objects in the heap to free up memory. This process, known as garbage collection, helps maintain efficient memory usage.
+## ☄️ Environment
++ Environment - The collection of bindings and their values that exist at a given time
+	+ When a program starts up, this environment is not empty. It always contains bindings that are part of the language standard
+	+ most of the time, it also has bindings that provide ways to interact with the surrounding system.
+		+ For example, in a browser, there are functions to interact with the currently loaded website and to read mouse and keyboard input.
 ## ☄️ Under the Hood
 
-| **Identifier** | **Type** | **Memory Address** | **Value**                  |
-| -------------- | -------- | ------------------ | -------------------------- |
-| `a`            | `let`    | `0x001`            | `123` (value)              |
-| `b`            | `let`    | `0x002`            | `"cat"` (value)            |
-| `c`            | `const`  | `0x003`            | `true` (value)             |
-| `d`            | `var`    | `0x004`            | `undefined` (value)        |
-| `e`            | `let`    | `0x005`            | `{}` (reference to object) |
+> If multiple variables `a, b, c` have the same primitive value, `10`, is there only one shared instance of `10` in memory that all three variables point to, or if there are three separate instances of `10` in memory? if the latter, is it inefficient?
 
 ```js
-let a = 123;
-let b = "cat";
-const c = true;
-var d;
-let e = {};
+let a = 10
+let b = 10
+let c = 10
 ```
 
-+ a simple view of how the JavaScript engine might internally keep track of variables
-+ In lower-level terms, a variable can be thought of as an entry in a symbol table that the JavaScript engine uses, mapping the variable name (identifier) to a memory address where the value is stored.
-+ variables are stored at an address in memory (RAM). Pass by reference means passing the address in memory. Pass by value means look at the address in memory, get the value and then send it.
-+ **For primitives (like numbers)**, JavaScript **copies the value** when you assign it to another variable. Both `a` and `b` will hold their own copies of the value `10`, stored at different memory locations.
-+ In javascript when you assign an object to another variable, its memory reference will be shared. It will not create a copy. At the same time, primitive values will act exact opposite to that. It will create a copy when it got assigned to another one variable.
+_ANSWER_ - depends on **how JavaScript engines optimize memory usage**, which can vary between implementations.
++ some engines _may_ optimize memory by using *interning or value sharing* for common primitives, meaning multiple variables with the same value (like `10`) could point to the same underlying memory representation. This avoids unnecessary duplication.
++ this behavior is abstracted away, and JavaScript gives you no direct control or visibility into whether primitives are de-duplicated at the memory level
++ For practical purposes, you can assume that each variable holds its own copy unless you're specifically concerned with low-level optimizations.
++ Also, primitive values like 10 are immutable and often small
+
++ logically, each variable `a`, `b`, and `c` holds its _own copy_ of the value `10` from a language perspective.
+- whether these copies share the same physical memory is an _implementation detail_ and does not affect how your code behaves.
 
 
 
 
 
-No, variables `a` and `b` do not share same memory location. Each variable is stored in a stack. So they convey the same value but not same reference.
-
-But, of course, value `10`, in it of itself, is accessed by JavaScript through a specific memory location, which JavaScript knows.
 
 
 
@@ -221,10 +228,7 @@ But, of course, value `10`, in it of itself, is accessed by JavaScript through 
 
 
 + semicolon ;
-+ Environment - The collection of bindings and their values that exist at a given time
-	+ When a program starts up, this environment is not empty. It always contains bindings that are part of the language standard
-	+ most of the time, it also has bindings that provide ways to interact with the surrounding system.
-		+ For example, in a browser, there are functions to interact with the currently loaded website and to read mouse and keyboard input.
++ 
 + Functions
 	+ A lot of the values provided in the default environment have the type _function_.
 + Expression

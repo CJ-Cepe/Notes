@@ -1,17 +1,33 @@
-# DATA TYPES
+# DATA TYPES/Values
 
 + 2 categories
-	+ **Primitive**
-	+ store values directly
+	+ **Primitive** - store values directly
 		+ Immutable - values can't change
 			+ variables are not values. variables point to values
+		+ There’s nothing I can do in my code that would affect them
+		+ If you attempt to set a property on a primitive value, be it a number or a string or something else, JavaScript won’t let you do that. Whether it will silently refuse your request or error depends on which mode your code is running in.
 	+ **Complex/compound** - store references
-+ 8 types
+		+ objects and functions
+		+ can manipulate them from my code.
++ Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.
+	+ Expressions always result in a single value.
++ 8 types of primitive values
 	+ boolean, number, bigInt, string, null, undefined, symbols, objects
++ Values
+	+ A value is a thing in the JavaScript universe.
+	+ There are values, and then there’s everything else. They don’t exist inside our code, but we can refer to them from our code.
++ Variables - We only said it’s the primitive values that can’t change. We didn’t say anything about variables!
+	+ Variables are not values. Variables point to values.
+	+ console.log(pet);
+		+ But note that it is not the pet variable that we pass to console.log. We might say that colloquially, but we can’t really pass variables to functions. We pass the current value of the pet variable.
+		+ When we write pet, we’re asking JavaScript a question: “What is the current value of pet?” To answer our question, JavaScript follows the pet’s “wire”, and gives us back the value at the end of this “wire”.
++ Variables always point at values.
+	+ Variables are not values. Each variable points to a particular value. We can change which value it points to by using the = assignment operator.
+
+
 
 ## Primitive
-
-### Boolean
+### Boolean  (true and false), used for logical operations.
 + Binary nature - `true` `false`
 	+ true - “yes, correct”
 	+ false - no, incorrect
@@ -20,7 +36,7 @@
 	let isGreater = 4 > 1;
 	alert( isGreater ); // true (the comparison result is "yes")
 	```
-### Number
+### Number (-100, 3.14, and others), used for math calculations.
 + represents _integer_ & _floating point_ numbers
 	+ displays numbers as **base 10** decimals by default
 + numbers are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), also known as [_“double precision floating point numbers"_](https://robotacademy.net.au/lesson/pixel-data-types/)
@@ -90,6 +106,7 @@
 ##### NaN (Not a Number)
 - `NaN`is a number: `typeof NaN`returns `number`
 	+ indicates that a number is not a legal number
+	+ represents the idea of an "invalid" number.
 	+ represents a computational error
 	+ result of an incorrect or an undefined mathematical operation
 + `NaN` is sticky
@@ -134,7 +151,7 @@
 	```
 	+ `Number.isFinite(value)` - stricter version checks number type
 
-### BigInt
+### BigInt (uncommon and new), used for math on big numbers.
 - for integer numbers of arbitrary length
 - represent whole numbers larger than `2^53 - 1`
 - created by appending `n` or using `BigInt()`
@@ -153,7 +170,7 @@
 	+ unary plus is not supported on `BigInts`
 + when inside `if` or other boolean operations, bigints behave like numbers
 
-### String
+### String ("hello", "abracadabra", and others), used for text.
 + The internal format for strings is always [UTF-16](https://en.wikipedia.org/wiki/UTF-16)
 	+ not tied to the page encoding
 	+ JS has no character type
@@ -258,18 +275,20 @@
 	}
 	```
 
-### null
+### null (null), used for intentionally missing values.
 + for unknown values – a standalone type
 + represents “nothing”, “empty” or “value unknown”
 + represents the INTENTIONAL absence of value
-### undefined
++ null is also a liar. Due to a bug in JavaScript, it pretends to be an object:
++  It is a primitive value, and it doesn’t behave in any way like an object. Unfortunately, typeof(null) is a historical accident that we’ll have to live with forever
+### undefined (undefined), used for unintentionally missing values.
 + for unassigned values – a standalone type
 + represents lack of defined value - “value is not assigned”
 + reserved as a default initial value for unassigned things
 	+ will have the value `undefined`
 + implies a variable's existence but lack of assignment
 
-### symbols
+### symbols (uncommon), used to hide implementation details.
 + for unique identifiers
 + __Creation__: a Symbol value is created by calling the Symbol function.
 	```jsx
@@ -298,7 +317,10 @@
 
 
 ## Complex
-### objects
+### Objects ({} and others), used to group related data and code.
+
+### Functions (x => x * 2 and others), used to refer to code.
+
 
 ## Type Conversions
 
@@ -365,3 +387,6 @@ Solution
 	```
 
 For `null` returns `"object"` – this is an error in the language, it’s not actually an object.
+
+
+casual speech
