@@ -1,41 +1,145 @@
-# DATA TYPES/Values
+# 🌌 Values
 
-+ 2 categories
-	+ **Primitive** - store values directly
-		+ Immutable - values can't change
-			+ variables are not values. variables point to values
-		+ There’s nothing I can do in my code that would affect them
-		+ If you attempt to set a property on a primitive value, be it a number or a string or something else, JavaScript won’t let you do that. Whether it will silently refuse your request or error depends on which mode your code is running in.
-	+ **Complex/compound** - store references
-		+ objects and functions
-		+ can manipulate them from my code.
-+ Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.
-	+ Expressions always result in a single value.
-+ 8 types of primitive values
-	+ boolean, number, bigInt, string, null, undefined, symbols, objects
-+ Values
-	+ A value is a thing in the JavaScript universe.
-	+ There are values, and then there’s everything else. They don’t exist inside our code, but we can refer to them from our code.
-+ Variables - We only said it’s the primitive values that can’t change. We didn’t say anything about variables!
-	+ Variables are not values. Variables point to values.
-	+ console.log(pet);
-		+ But note that it is not the pet variable that we pass to console.log. We might say that colloquially, but we can’t really pass variables to functions. We pass the current value of the pet variable.
-		+ When we write pet, we’re asking JavaScript a question: “What is the current value of pet?” To answer our question, JavaScript follows the pet’s “wire”, and gives us back the value at the end of this “wire”.
-+ Variables always point at values.
-	+ Variables are not values. Each variable points to a particular value. We can change which value it points to by using the = assignment operator.
+## ☄️ Core
++ __Expressions__ - questions that JavaScript can answer
+	+ JS answers expressions in the only way it knows how — with _values_
+	+ Expressions always result in a single value
++ __Values__ - a thing in JS universe
+	+ they don't exist inside the code, but we can refer to them from our code
++ __Variables__ - We only said it’s the primitive values that can’t change. We didn’t say anything about variables!
+## ☄️ Categories of Values
++ **Primitive** - store values directly
+	+ _Immutable_
+		+ values can't change
+		+ property can't be set
+		+ nothing in the code can affect them
++ **Complex/compound** - store references
+	+ _objects_ and _functions_
+	+ can manipulate them from my code
 
+> [!IMPORTANT]
+>  - _Variables_ are NOT _Values_. Variables point to Values
+>  - Primitive values can't change, Variables can
+>  - In function parameters, we are not passing Variables, but the current content of it
+>  > What is the current value of the variable?” To answer our question, JS follows the variable’s “wire”, and gives us back the value at the end of this “wire
 
-
-## Primitive
-### Boolean  (true and false), used for logical operations.
+## ☄️ 8 Types of Primitive Values
+### 🛰️ Boolean
++ Used for logical operations.
 + Binary nature - `true` `false`
-	+ true - “yes, correct”
-	+ false - no, incorrect
+	+ `true` - “yes, correct”
+	+ `false` - "no, incorrect"
 + Boolean values as a result of comparisons
 	```js
 	let isGreater = 4 > 1;
-	alert( isGreater ); // true (the comparison result is "yes")
+	alert( isGreater ); //true (the comparison result is "yes")
 	```
+### 🛰️ String 
++ Used for text
++ The internal format for strings is always [UTF-16](https://en.wikipedia.org/wiki/UTF-16)
+	+ not tied to the page encoding
+	+ JS has no `character` type
+	+ indexes are zero-based
++ Strings are immutable
+	```js
+	let str = 'Hi';
+
+	//error
+	str[0] = 'h'; // error
+	alert( str[0] ); // doesn't work
+
+	//workaround
+	str = 'h' + str[1]; // replace the string
+	alert( str ); // hi
+	```
+- A string in JavaScript must be surrounded by quotes
+	```js
+	let str = "Hello";  //double quotes
+	let str2 = 'Single quotes are ok too';  //single quotes
+	let phrase = `can embed another ${str}`;  //backticks
+	
+	const sglDbl = 'Would you eat a "fish supper"?';
+	const dblSgl = "I'm feeling blue.";
+	```
+- Escaping characters in a string
+	```jsx
+	const bigmouth = 'I\'ve got no right to take my place…';
+	```
+- **Template Literal** (String Interpolation)
+	- To join together strings in JavaScript you can use a different type of string, called a _template literal_
+	- allows to embed variables and expressions into a string `${expression}`
+	- Backticks are “extended functionality” quotes 
+	- we can insert, or _interpolate_, variables into strings using _template literals_
+	```jsx
+	// embed a variable
+	const myPet = 'armadillo';
+	console.log(`I own a pet ${myPet}.`); // I own a pet armadillo.
+
+	// embed an expression
+	alert( `the result is ${1 + 2}` ); // the result is 3
+	```
+	- _Backticks_
+		- Backticks also allow us to specify a “template function” before the first backtick.
+		- func`string`
+			- The function `func` is called automatically, receives the string and embedded expressions and can process them
+			- This feature is called “tagged templates”
+- Multi-line string
+	- Template literals respect the line breaks in the source code, so you can write strings that span multiple lines like this:
+		```jsx
+		const output = `I like the song.
+		I gave it a score of 90%.`;
+		console.log(output);
+		
+		/*
+		I like the song.
+		I gave it a score of 90%.
+		*/
+		```
+- Special Characters
+	- all special characters start with a backslash character `\` _"escape character"_
+		- `\n` newline || `\r\n` windows
+		- `\t` tab
+		- `\\` backslash
+		- `\u...` unicode
+	- special character, such as `\n`, is counted as one
+- String comparison
+	- JavaScript uses the so-called “dictionary” or “lexicographical” order
+	- Strings are compared letter-by-letter
+	- The algorithm to compare two strings is simple:
+		1. Compare the first character of both strings.
+		2. If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second. We’re done.
+		3. Otherwise, if both strings’ first characters are the same, compare the second characters the same way.
+		4. Repeat until the end of either string.
+		5. If both strings end at the same length, then they are equal. Otherwise, the longer string is greater.
+	- Not a real dictionary, but Unicode order
+		- The comparison algorithm given above is roughly equivalent to the one used in dictionaries or phone books, but it’s not exactly the same.
+		- For instance, case matters. A capital letter "A" is not equal to the lowercase "a". Which one is greater? The lowercase "a". Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode)
+	- A lowercase letter is always greater than the uppercase
+	- Letters with diacritical marks are “out of order”
+	- avascript are encoded using UTF-16 - each character has a corresponding numeric code
+	- The characters are compared by their numeric code. The greater code means that the character is greater
+- Accessing characters
+	```js
+	let str = `Hello`;
+
+	// the first character
+	alert( str[0] ); // H
+	alert( str.at(0) ); // H
+	
+	// the last character
+	alert( str[str.length - 1] ); // o
+	alert( str.at(-1) );
+	```
+	+ `.at(pos)` method has a benefit of allowing negative position
+		+  If pos is negative, then it’s counted from the end of the string
+	+ The square brackets always return undefined for negative indexes
++ Iterate over characters using `for..of`
+	```js
+	for (let char of "Hello") {
+	  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
+	}
+	```
+
 ### Number (-100, 3.14, and others), used for math calculations.
 + represents _integer_ & _floating point_ numbers
 	+ displays numbers as **base 10** decimals by default
@@ -170,110 +274,6 @@
 	+ unary plus is not supported on `BigInts`
 + when inside `if` or other boolean operations, bigints behave like numbers
 
-### String ("hello", "abracadabra", and others), used for text.
-+ The internal format for strings is always [UTF-16](https://en.wikipedia.org/wiki/UTF-16)
-	+ not tied to the page encoding
-	+ JS has no character type
-	+ indexes are zero-based
-+ Strings are immutable
-	```js
-	let str = 'Hi';
-
-	//error
-	str[0] = 'h'; // error
-	alert( str[0] ); // doesn't work
-
-	//workaround
-	str = 'h' + str[1]; // replace the string
-	alert( str ); // hi
-	```
-- A string in JavaScript must be surrounded by quotes
-	```js
-	let str = "Hello";  //double quotes
-	let str2 = 'Single quotes are ok too';  //single quotes
-	let phrase = `can embed another ${str}`;  //backticks
-	
-	const sglDbl = 'Would you eat a "fish supper"?';
-	const dblSgl = "I'm feeling blue.";
-	```
-- Escaping characters in a string
-	```jsx
-	const bigmouth = 'I\'ve got no right to take my place…';
-	```
-- **Template Literal** (String Interpolation)
-	- To join together strings in JavaScript you can use a different type of string, called a _template literal_
-	- allows to embed variables and expressions into a string `${expression}`
-	- Backticks are “extended functionality” quotes 
-	- we can insert, or _interpolate_, variables into strings using _template literals_
-	```jsx
-	// embed a variable
-	const myPet = 'armadillo';
-	console.log(`I own a pet ${myPet}.`); // I own a pet armadillo.
-
-	// embed an expression
-	alert( `the result is ${1 + 2}` ); // the result is 3
-	```
-	- Backticks
-		- Backticks also allow us to specify a “template function” before the first backtick.
-		- func`string`
-			- The function `func` is called automatically, receives the string and embedded expressions and can process them
-			- This feature is called “tagged templates”
-- Multi-line string
-	- Template literals respect the line breaks in the source code, so you can write strings that span multiple lines like this:
-		```jsx
-		const output = `I like the song.
-		I gave it a score of 90%.`;
-		console.log(output);
-		
-		/*
-		I like the song.
-		I gave it a score of 90%.
-		*/
-		```
-- Special Characters
-	- all special characters start with a backslash character `\` _"escape character"_
-		- `\n` newline || `\r\n` windows
-		- `\t` tab
-		- `\\` backslash
-		- `\u...` unicode
-	- special character, such as `\n`, is counted as one
-- String comparison
-	- JavaScript uses the so-called “dictionary” or “lexicographical” order
-	- Strings are compared letter-by-letter
-	- The algorithm to compare two strings is simple:
-		1. Compare the first character of both strings.
-		2. If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second. We’re done.
-		3. Otherwise, if both strings’ first characters are the same, compare the second characters the same way.
-		4. Repeat until the end of either string.
-		5. If both strings end at the same length, then they are equal. Otherwise, the longer string is greater.
-	- Not a real dictionary, but Unicode order
-		- The comparison algorithm given above is roughly equivalent to the one used in dictionaries or phone books, but it’s not exactly the same.
-		- For instance, case matters. A capital letter "A" is not equal to the lowercase "a". Which one is greater? The lowercase "a". Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode)
-	- A lowercase letter is always greater than the uppercase
-	- Letters with diacritical marks are “out of order”
-	- avascript are encoded using UTF-16 - each character has a corresponding numeric code
-	- The characters are compared by their numeric code. The greater code means that the character is greater
-- Accessing characters
-	```js
-	let str = `Hello`;
-
-	// the first character
-	alert( str[0] ); // H
-	alert( str.at(0) ); // H
-	
-	// the last character
-	alert( str[str.length - 1] ); // o
-	alert( str.at(-1) );
-	```
-	+ `.at(pos)` method has a benefit of allowing negative position
-		+  If pos is negative, then it’s counted from the end of the string
-	+ The square brackets always return undefined for negative indexes
-+ Iterate over characters using `for..of`
-	```js
-	for (let char of "Hello") {
-	  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
-	}
-	```
 
 ### null (null), used for intentionally missing values.
 + for unknown values – a standalone type
@@ -316,13 +316,17 @@
 	```
 
 
-## Complex
+
+
+## ☄️ 2 Types of Complex Values
 ### Objects ({} and others), used to group related data and code.
 
 ### Functions (x => x * 2 and others), used to refer to code.
 
 
-## Type Conversions
+
+
+## ☄️ Type Conversions
 
 String Conversion
 	.String()

@@ -1,13 +1,13 @@
 # 🌌 Variables
 ## ☄️ Core
 + Variable/s is/are
-	+ a _named container_ for a value
+	+ a _named container_ for a value 
 	+ label and store data in memory
 	+ also referred as _bindings_ & Identifiers
-+ variables can hold two types of data: _primitive_ & _reference_ values
++ Variables can hold two types of data: _primitive_ & _reference_ values
++ Each variable points to a particular value
+	+ We can change which value it points to by using the = assignment operator.
 
->[!IMPORTANT]
-> Variables are not values; they contain values and represent them with a name
 ## ☄️ Syntax
 ```JS
 	//Declaring variable
