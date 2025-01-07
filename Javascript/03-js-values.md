@@ -40,18 +40,6 @@
 	+ not tied to the page encoding
 	+ JS has no `character` type
 	+ indexes are zero-based
-+ Strings are immutable
-	```js
-	let str = 'Hi';
-
-	//error
-	str[0] = 'h'; // error
-	alert( str[0] ); // doesn't work
-
-	//workaround
-	str = 'h' + str[1]; // replace the string
-	alert( str ); // hi
-	```
 - A string in JavaScript must be surrounded by quotes
 	```js
 	let str = "Hello";  //double quotes
@@ -64,37 +52,44 @@
 - Escaping characters in a string
 	```jsx
 	const bigmouth = 'I\'ve got no right to take my place…';
+	
+	console.log(`string text line 1 \
+	string text line 2`);
+	// "string text line 1 string text line 2"
 	```
-- **Template Literal** (String Interpolation)
-	- To join together strings in JavaScript you can use a different type of string, called a _template literal_
-	- allows to embed variables and expressions into a string `${expression}`
-	- Backticks are “extended functionality” quotes 
-	- we can insert, or _interpolate_, variables into strings using _template literals_
-	```jsx
-	// embed a variable
-	const myPet = 'armadillo';
-	console.log(`I own a pet ${myPet}.`); // I own a pet armadillo.
++ Iterate over characters using `for..of`
+	```js
+	for (let char of "Hello") {
+	  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
+	}
+	```
++ Strings are immutable
+	```js
+	let str = 'Hi';
 
-	// embed an expression
-	alert( `the result is ${1 + 2}` ); // the result is 3
+	//error
+	str[0] = 'h'; // error
+	alert( str[0] ); // doesn't work
+
+	//workaround
+	str = 'h' + str[1]; // replace the string
+	alert( str ); // hi
 	```
-	- _Backticks_
-		- Backticks also allow us to specify a “template function” before the first backtick.
-		- func`string`
-			- The function `func` is called automatically, receives the string and embedded expressions and can process them
-			- This feature is called “tagged templates”
-- Multi-line string
-	- Template literals respect the line breaks in the source code, so you can write strings that span multiple lines like this:
-		```jsx
-		const output = `I like the song.
-		I gave it a score of 90%.`;
-		console.log(output);
-		
-		/*
-		I like the song.
-		I gave it a score of 90%.
-		*/
-		```
+- Accessing characters
+	```js
+	let str = `Hello`;
+
+	// the first character
+	alert( str[0] ); // H
+	alert( str.at(0) ); // H
+	
+	// the last character
+	alert( str[str.length - 1] ); // o
+	alert( str.at(-1) );
+	```
+	+ `.at(pos)` method has a benefit of allowing negative position
+		+  If pos is negative, then it’s counted from the end of the string
+	+ The square brackets always return undefined for negative indexes
 - Special Characters
 	- all special characters start with a backslash character `\` _"escape character"_
 		- `\n` newline || `\r\n` windows
@@ -116,31 +111,11 @@
 		- For instance, case matters. A capital letter "A" is not equal to the lowercase "a". Which one is greater? The lowercase "a". Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode)
 	- A lowercase letter is always greater than the uppercase
 	- Letters with diacritical marks are “out of order”
-	- avascript are encoded using UTF-16 - each character has a corresponding numeric code
+	- JS are encoded using UTF-16 - each character has a corresponding numeric code
 	- The characters are compared by their numeric code. The greater code means that the character is greater
-- Accessing characters
-	```js
-	let str = `Hello`;
 
-	// the first character
-	alert( str[0] ); // H
-	alert( str.at(0) ); // H
-	
-	// the last character
-	alert( str[str.length - 1] ); // o
-	alert( str.at(-1) );
-	```
-	+ `.at(pos)` method has a benefit of allowing negative position
-		+  If pos is negative, then it’s counted from the end of the string
-	+ The square brackets always return undefined for negative indexes
-+ Iterate over characters using `for..of`
-	```js
-	for (let char of "Hello") {
-	  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
-	}
-	```
-
-### Number (-100, 3.14, and others), used for math calculations.
+### 🛰️ Number
++ used for math calculations
 + represents _integer_ & _floating point_ numbers
 	+ displays numbers as **base 10** decimals by default
 + numbers are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), also known as [_“double precision floating point numbers"_](https://robotacademy.net.au/lesson/pixel-data-types/)
@@ -160,9 +135,9 @@
 	let y = 9999999999999999;  // y will be 10000000000000000
 	```
 	- the maximum number of decimals is 17
-		```jsx
-		let x = 0.1 + 0.2; // x will be 0.30000000000000004, not 0.3
-		```
+	```jsx
+	let x = 0.1 + 0.2; // x will be 0.30000000000000004, not 0.3
+	```
 - can be written with or without decimals
 	```js
 	let integer1 = 10;
@@ -209,9 +184,7 @@
 #### Special numeric values
 ##### NaN (Not a Number)
 - `NaN`is a number: `typeof NaN`returns `number`
-	+ indicates that a number is not a legal number
-	+ represents the idea of an "invalid" number.
-	+ represents a computational error
+	+ represents the idea of an "invalid" number
 	+ result of an incorrect or an undefined mathematical operation
 + `NaN` is sticky
 	+ any mathematical operation on NaN returns NaN
@@ -255,10 +228,11 @@
 	```
 	+ `Number.isFinite(value)` - stricter version checks number type
 
-### BigInt (uncommon and new), used for math on big numbers.
-- for integer numbers of arbitrary length
-- represent whole numbers larger than `2^53 - 1`
-- created by appending `n` or using `BigInt()`
+### 🛰️ BigInt 
++ used for math on big numbers (uncommon & new)
++ for integer numbers of arbitrary length
++ represent whole numbers larger than `2^53 - 1`
++ created by appending `n` or using `BigInt()`
 	```js
 	//appending n
 	let x = 1234567890123456789012345678901234567890n;
@@ -273,22 +247,21 @@
 	+ `BigInt` CANNOT be used with methods in the built-in Math object
 	+ unary plus is not supported on `BigInts`
 + when inside `if` or other boolean operations, bigints behave like numbers
-
-
-### null (null), used for intentionally missing values.
-+ for unknown values – a standalone type
+### 🛰️ Null 
++ used for _intentionally_ unknown/missing values – a standalone type
 + represents “nothing”, “empty” or “value unknown”
 + represents the INTENTIONAL absence of value
 + null is also a liar. Due to a bug in JavaScript, it pretends to be an object:
-+  It is a primitive value, and it doesn’t behave in any way like an object. Unfortunately, typeof(null) is a historical accident that we’ll have to live with forever
-### undefined (undefined), used for unintentionally missing values.
-+ for unassigned values – a standalone type
++ It is a primitive value, and it doesn’t behave in any way like an object. Unfortunately, `typeof(null)` is a historical accident that we’ll have to live with forever
+### 🛰️ Undefined 
++ used for _unintentionally_ unassigned/missing values – a standalone type
 + represents lack of defined value - “value is not assigned”
-+ reserved as a default initial value for unassigned things
++ reserved as a _default initial value_ for unassigned things
 	+ will have the value `undefined`
 + implies a variable's existence but lack of assignment
 
-### symbols (uncommon), used to hide implementation details.
+### 🛰️ Symbols 
++ used to hide implementation details (uncommon).
 + for unique identifiers
 + __Creation__: a Symbol value is created by calling the Symbol function.
 	```jsx
