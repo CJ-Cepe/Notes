@@ -36,3 +36,8 @@
 > References
 > - https://javascript.info/
 > - https://www.theodinproject.com/
+
+
+## Expression
+What is a value? A value is a thing in the JavaScript universe
+To distinguish values from everything else

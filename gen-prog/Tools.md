@@ -4,7 +4,6 @@
 <dt>Lightweight Editor</dt>
 + Simple and fast code editor focused on editing text, with fewer built-in tools, but often customizable with extensions.
 + **Examples**: Visual Studio, IntelliJ IDEA, Eclipse.
-
 ## IDE
 <dt>IDE (Integrated Development Environment)</dt>
 + Full-featured software with tools like debugging, code suggestions, and project management, all-in-one.
