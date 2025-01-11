@@ -1,4 +1,6 @@
-## `If` statement
+# 🌌 Conditional Branching
+
+## If statement
 + The `if(...)` statement evaluates a condition in parentheses and `if` statements don't just work with true or false values. They evaluate truthy or falsy values.
 + evaluates the expression in its parentheses and converts the result to a Boolean. 
 	+ If the expression evaluates to a truthy value, the if block executes.
@@ -27,8 +29,11 @@ if (true) {
 console.log(a); // ReferenceError: a is not defined
 ```
 ## Conditional operator ‘?’
++ represented by a question mark `?`. Sometimes it’s called “ternary”, because the operator has three operands.
+	+ the one and only operator in JavaScript which has that many
 + Assign a variable depending on a condition
 + The question mark operator has a low precedence
+	+ we can omit the parentheses
 ```js
 // syntax
 let result = condition ? value1 : value2;
@@ -56,8 +61,6 @@ let company = prompt('Which company created JavaScript?', '');
 
 >[!NOTE]
 >The purpose of the question mark operator ? is to return one value or another depending on its condition. Please use it for exactly that. Use if when you need to execute different branches of code
-
-
 
 ## Switch statement
 + __Syntax__
