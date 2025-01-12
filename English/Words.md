@@ -4,3 +4,6 @@
 + coherent
 + infer
 + reverence
++ novelty
++ casual speech
++ 
